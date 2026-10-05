@@ -13,7 +13,7 @@ jobs:
     # prevents this action from running on forks
     if: github.repository == 'vuejs/core'
     needs: [test]
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     permissions:
       contents: write
       id-token: write

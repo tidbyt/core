@@ -7,7 +7,7 @@ permissions:
 
 jobs:
   unit-test:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     env:
       PUPPETEER_SKIP_DOWNLOAD: 'true'
     steps:
@@ -30,7 +30,7 @@ jobs:
         run: pnpm run test-unit
 
   unit-test-windows:
-    runs-on: windows-latest
+    runs-on: blacksmith-4vcpu-windows-2025
     env:
       PUPPETEER_SKIP_DOWNLOAD: 'true'
     steps:
@@ -57,7 +57,7 @@ jobs:
             run: pnpm run test-unit server-renderer
 
   e2e-test:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -95,7 +95,7 @@ jobs:
         run: node scripts/verify-treeshaking.js
 
   lint-and-test-dts:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     env:
       PUPPETEER_SKIP_DOWNLOAD: 'true'
     steps:
