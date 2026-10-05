@@ -1,14 +1,7 @@
 name: 'ci'
 on:
   push:
-    branches:
-      - '**'
-    tags:
-      - '!**'
   pull_request:
-    branches:
-      - main
-      - minor
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -19,10 +12,10 @@ permissions:
 
 jobs:
   test:
-    if: ${{ ! startsWith(github.event.head_commit.message, 'release:') && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) }}
     uses: ./.github/workflows/test.yml
 
   continuous-release:
+    if: github.repository == 'vuejs/core'
     runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       - name: Checkout
